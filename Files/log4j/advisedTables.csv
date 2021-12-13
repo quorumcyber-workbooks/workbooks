@@ -1,1 +1,1 @@
-﻿AzureDiagnostics,WireData,VMConnection,OfficeActivity,DnsEvents,CommonSecurtityLog,SecurityEvent,SigninLogs,AADNonInteractiveUserSignInLogs,W3CIISLog,AzureActivity,AWSCloudTrail,DeviceNetworkEvents
+﻿"AzureDiagnostics,WireData,VMConnection,OfficeActivity,DnsEvents,CommonSecurtityLog,SecurityEvent,SigninLogs,AADNonInteractiveUserSignInLogs,W3CIISLog,AzureActivity,AWSCloudTrail,DeviceNetworkEvents"
