@@ -3,3 +3,6 @@ AzureDiagnostics,"If you have an App Gateway in Azure, this would show here"
 CloudAppEvents,Defender for Endpoint can detect attack strings
 CommonSecurityLog,Firewall logs or other network security device to help spot malcious network traffic
 DeviceNetworkEvents,Defender for Endpoint can spot maliciious network traffic
+DeviceProcessEvents,Defender for Endpoint table to spot attacks originating on your network
+DnsEvents,Helps spot exfiltration via DNS
+W3CIISLog,Spot attacks against your IIS servers
