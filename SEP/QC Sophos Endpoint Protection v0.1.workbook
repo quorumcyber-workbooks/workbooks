@@ -1,0 +1,2150 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "crossComponentResources": [
+          "{Subscription}"
+        ],
+        "parameters": [
+          {
+            "id": "997c84bc-c454-47f7-a288-99429173dfeb",
+            "version": "KqlParameterItem/1.0",
+            "name": "Subscription",
+            "type": 6,
+            "isRequired": true,
+            "multiSelect": true,
+            "quote": "'",
+            "delimiter": ",",
+            "value": [
+              ""
+            ],
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "includeAll": false
+            },
+            "label": "☁️Subscription"
+          },
+          {
+            "id": "73638b3d-aa3f-4872-a56b-a0eaf3fc7714",
+            "version": "KqlParameterItem/1.0",
+            "name": "Workspace",
+            "type": 5,
+            "isRequired": true,
+            "query": "Resources | where type =~ \"microsoft.operationalinsights/workspaces\" | order by name | project id, name, selected=row_number()==1, group=resourceGroup",
+            "crossComponentResources": [
+              "{Subscription}"
+            ],
+            "typeSettings": {
+              "additionalResourceOptions": []
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources",
+            "label": "🗂️ Workspace"
+          },
+          {
+            "id": "9fa77675-1222-4936-89d0-285da325bba0",
+            "version": "KqlParameterItem/1.0",
+            "name": "TimeRange",
+            "label": "⏱️ Time Range",
+            "type": 4,
+            "description": "Used as the \"outer\" time range for the query. the query text may further alter the range",
+            "isRequired": true,
+            "value": {
+              "durationMs": 2592000000
+            },
+            "typeSettings": {
+              "selectableValues": [
+                {
+                  "durationMs": 300000
+                },
+                {
+                  "durationMs": 900000
+                },
+                {
+                  "durationMs": 1800000
+                },
+                {
+                  "durationMs": 3600000
+                },
+                {
+                  "durationMs": 14400000
+                },
+                {
+                  "durationMs": 43200000
+                },
+                {
+                  "durationMs": 86400000
+                },
+                {
+                  "durationMs": 172800000
+                },
+                {
+                  "durationMs": 259200000
+                },
+                {
+                  "durationMs": 604800000
+                },
+                {
+                  "durationMs": 1209600000
+                },
+                {
+                  "durationMs": 2419200000
+                },
+                {
+                  "durationMs": 2592000000
+                }
+              ],
+              "allowCustom": true
+            }
+          },
+          {
+            "id": "a0406b61-d150-4fd8-80d7-b2e0f97585c4",
+            "version": "KqlParameterItem/1.0",
+            "name": "Help",
+            "type": 10,
+            "isRequired": true,
+            "typeSettings": {
+              "additionalResourceOptions": []
+            },
+            "jsonData": "[\r\n { \"value\": \"Yes\", \"label\": \"Yes\"},\r\n {\"value\": \"No\", \"label\": \"No\", \"selected\":true },\r\n { \"value\": \"Change Log\", \"label\": \"Change Log\"}\r\n]",
+            "label": "📖 Help"
+          }
+        ],
+        "style": "above",
+        "queryType": 1,
+        "resourceType": "microsoft.resourcegraph/resources"
+      },
+      "customWidth": "75",
+      "name": "parameters - 1"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "![Image Name](https://github.com/quorumcyber-workbooks/workbooks/blob/main/Logos/Quorum Cyber_Logo_RGB.png?raw=true\"https://www.quorumcyber.com/\"?width=300600&height=150)\r\n\r\nhttps://www.quorumcyber.com/  \r\nSophos Endpoint Protection Workbook  ©"
+      },
+      "customWidth": "15",
+      "name": "text - 8",
+      "styleSettings": {
+        "margin": "25",
+        "padding": "25"
+      }
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "### Change Log \r\n\r\n|Version|Description|\r\n|---|---|\r\n|v1.0|Initial Version.| "
+      },
+      "conditionalVisibility": {
+        "parameterName": "Help",
+        "comparison": "isEqualTo",
+        "value": "Change Log"
+      },
+      "name": "text - 7 - Copy"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "### Help file\r\n\r\nSupport for Sophos Endpoint Protection \r\n\r\n"
+      },
+      "conditionalVisibility": {
+        "parameterName": "Help",
+        "comparison": "isEqualTo",
+        "value": "Yes"
+      },
+      "name": "text - 7"
+    },
+    {
+      "type": 11,
+      "content": {
+        "version": "LinkItem/1.0",
+        "style": "tabs",
+        "links": [
+          {
+            "id": "f9950e6b-4957-4c0b-a43b-fde1eafebaab",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "📚 Summary",
+            "subTarget": "summary",
+            "style": "link"
+          },
+          {
+            "id": "dac5ea2f-0af4-41a9-a818-6349ad851d47",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "🚦 Alerts",
+            "subTarget": "alert",
+            "style": "link"
+          },
+          {
+            "id": "47cc15d7-1dba-4f9b-a44e-4add7c321d7c",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "Malware",
+            "subTarget": "malware",
+            "style": "link"
+          },
+          {
+            "id": "e38731c2-1ed9-4bd8-bcf0-96bbd309c505",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "Protection",
+            "subTarget": "protection",
+            "style": "link"
+          },
+          {
+            "id": "c5e06a07-e6f1-4468-9ebb-12b6f04d9e06",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "Web",
+            "subTarget": "web",
+            "style": "link"
+          },
+          {
+            "id": "85f0879c-4feb-4438-867c-10de9146fdf2",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "Updating",
+            "subTarget": "updating",
+            "style": "link"
+          },
+          {
+            "id": "b35446f2-a0b2-47a7-85ab-71938320527d",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "Runtime",
+            "subTarget": "runtime",
+            "style": "link"
+          },
+          {
+            "id": "0b044861-2bdd-429c-b35a-1208e55a80d0",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "Peripherals   ",
+            "subTarget": "peripherals",
+            "style": "link"
+          },
+          {
+            "id": "095b6baf-8ef5-4aef-8bee-7487a7590feb",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "Mobiles",
+            "subTarget": "mobiles",
+            "style": "link"
+          },
+          {
+            "id": "353f29f7-ab93-443b-951b-fc8792800edf",
+            "cellValue": "selectedTab",
+            "linkTarget": "parameter",
+            "linkLabel": "📈 Table Status",
+            "subTarget": "status",
+            "style": "link"
+          }
+        ]
+      },
+      "name": "links - 6"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "## select a workspace to see saved queries."
+      },
+      "conditionalVisibilities": [
+        {
+          "parameterName": "Workspace",
+          "comparison": "isEqualTo"
+        },
+        {
+          "parameterName": "Subscription",
+          "comparison": "isNotEqualTo"
+        }
+      ],
+      "name": "no workspace set"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "## select one or more subscriptions, then pick a workspace to get started"
+      },
+      "conditionalVisibility": {
+        "parameterName": "Subscription",
+        "comparison": "isEqualTo"
+      },
+      "name": "no subscription selected"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let tableList = dynamic(['SophosEPEvent', 'SophosEP_CL']);\r\nUsage\r\n| where DataType in (tableList)\r\n| summarize sum(_BilledSize), LastLogReceived = max(TimeGenerated), minsSinceLastLogReceived = datetime_diff('minute',now(), max(TimeGenerated)) by DataType, IsBillable \r\n| join \r\n(\r\n    Usage\r\n    | make-series count() on TimeGenerated from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain} by DataType\r\n) on DataType\r\n| project-away DataType1\r\n\r\n",
+        "size": 1,
+        "title": "Data Availability Check.  Data for {TimeRange:label}",
+        "timeContextFromParameter": "TimeRange",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "{Workspace}"
+        ],
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "DataType",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "success",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "sum__BilledSize",
+              "formatter": 0,
+              "numberFormat": {
+                "unit": 36,
+                "options": {
+                  "style": "decimal",
+                  "maximumFractionDigits": 2
+                }
+              }
+            },
+            {
+              "columnMatch": "minsSinceLastLogReceived",
+              "formatter": 0,
+              "numberFormat": {
+                "unit": 25,
+                "options": {
+                  "style": "decimal"
+                }
+              }
+            },
+            {
+              "columnMatch": "count_",
+              "formatter": 10,
+              "formatOptions": {
+                "palette": "pink"
+              }
+            },
+            {
+              "columnMatch": "TimeGenerated",
+              "formatter": 5
+            }
+          ],
+          "labelSettings": [
+            {
+              "columnId": "sum__BilledSize",
+              "label": "Sum of Billed Data"
+            },
+            {
+              "columnId": "minsSinceLastLogReceived",
+              "label": "Time Since Last Log Recieved"
+            },
+            {
+              "columnId": "count_",
+              "label": "Trend"
+            }
+          ]
+        },
+        "sortBy": []
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "status"
+      },
+      "customWidth": "75",
+      "name": "query - status"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "union isfuzzy=true SophosEPEvent, Usage\r\n| limit 1\r\n| where Type !='Usage'\r\n| project AliasExists = \"Alias: SophosEPEvent exists\"\r\n\r\n",
+        "size": 1,
+        "title": "Parser alias Check.  Data for {TimeRange:label}",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "{Workspace}"
+        ],
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "AliasExists",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "success",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "DataType",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "success",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "sum__BilledSize",
+              "formatter": 0,
+              "numberFormat": {
+                "unit": 36,
+                "options": {
+                  "style": "decimal",
+                  "maximumFractionDigits": 2
+                }
+              }
+            },
+            {
+              "columnMatch": "minsSinceLastLogReceived",
+              "formatter": 0,
+              "numberFormat": {
+                "unit": 25,
+                "options": {
+                  "style": "decimal"
+                }
+              }
+            },
+            {
+              "columnMatch": "count_",
+              "formatter": 10,
+              "formatOptions": {
+                "palette": "pink"
+              }
+            },
+            {
+              "columnMatch": "TimeGenerated",
+              "formatter": 5
+            }
+          ]
+        },
+        "sortBy": []
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "status"
+      },
+      "customWidth": "25",
+      "name": "query - alias check"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let tableList = dynamic(['SophosEPEvent', 'SophosEP_CL']);\r\nUsage\r\n| where DataType in (tableList)\r\n| summarize count() by bin(TimeGenerated,{TimeRange:grain}), DataType\r\n\r\n",
+        "size": 1,
+        "title": "Data Count over time.  Data for {TimeRange:label}",
+        "timeContextFromParameter": "TimeRange",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "{Workspace}"
+        ],
+        "visualization": "areachart",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "DataType",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "success",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "sum__BilledSize",
+              "formatter": 0,
+              "numberFormat": {
+                "unit": 36,
+                "options": {
+                  "style": "decimal",
+                  "maximumFractionDigits": 2
+                }
+              }
+            },
+            {
+              "columnMatch": "count_",
+              "formatter": 10,
+              "formatOptions": {
+                "palette": "pink"
+              }
+            },
+            {
+              "columnMatch": "TimeGenerated",
+              "formatter": 5
+            }
+          ],
+          "labelSettings": [
+            {
+              "columnId": "count_",
+              "label": "Trend"
+            }
+          ]
+        },
+        "sortBy": []
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "status"
+      },
+      "customWidth": "50",
+      "name": "query - status - data count"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let tableList = dynamic(['SophosEPEvent', 'SophosEP_CL']);\r\nUsage\r\n| where DataType in (tableList)\r\n| where _IsBillable=true\r\n| summarize GBytes=sum(_BilledSize)/1000 by bin(TimeGenerated,{TimeRange:grain}), DataType\r\n\r\n",
+        "size": 1,
+        "title": "GB per day, Capacity over time.  Data for {TimeRange:label}",
+        "timeContextFromParameter": "TimeRange",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "{Workspace}"
+        ],
+        "visualization": "areachart",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "DataType",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "success",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "sum__BilledSize",
+              "formatter": 0,
+              "numberFormat": {
+                "unit": 36,
+                "options": {
+                  "style": "decimal",
+                  "maximumFractionDigits": 2
+                }
+              }
+            },
+            {
+              "columnMatch": "count_",
+              "formatter": 10,
+              "formatOptions": {
+                "palette": "pink"
+              }
+            },
+            {
+              "columnMatch": "TimeGenerated",
+              "formatter": 5
+            }
+          ],
+          "labelSettings": [
+            {
+              "columnId": "count_",
+              "label": "Trend"
+            }
+          ]
+        },
+        "sortBy": []
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "status"
+      },
+      "customWidth": "50",
+      "name": "query - status - data capacity GB per day"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| summarize count() by bin(TimeGenerated,{TimeRange:grain})",
+              "size": 4,
+              "title": "📊 Data flow over Time.   TimeRange selected: {TimeRange:label} with Automatic Time Grain of: {TimeRange:grain}",
+              "color": "pink",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "areachart"
+            },
+            "name": "query - 2"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| summarize count() by EventType\r\n| order by count_ desc",
+              "size": 4,
+              "title": "Event Type",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "50",
+            "name": "query - event type"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| summarize count() by  EventSeverity\r\n| order by count_ desc",
+              "size": 4,
+              "title": "Severity count",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "50",
+            "name": "query - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| extend accountId_ = Source //DstUserSid\r\n| where isnotempty(accountId_)\r\n| summarize count() by accountId_\r\n| order by count_ desc",
+              "size": 4,
+              "title": "User count",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "50",
+            "name": "query - 0 - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where EventType == 'alert'\r\n| summarize count() by data_endpoint_type_s, data_endpoint_platform_s\r\n| order by count_ desc\r\n",
+              "size": 4,
+              "title": "Platform count",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "gridSettings": {
+                "sortBy": [
+                  {
+                    "itemKey": "count_",
+                    "sortOrder": 2
+                  }
+                ]
+              },
+              "sortBy": [
+                {
+                  "itemKey": "count_",
+                  "sortOrder": 2
+                }
+              ],
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "data_endpoint_type_s",
+                  "formatter": 1
+                },
+                "subtitleContent": {
+                  "columnMatch": "data_endpoint_platform_s"
+                },
+                "leftContent": {
+                  "columnMatch": "count_",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "palette": "auto"
+                  },
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "maximumSignificantDigits": 3,
+                      "maximumFractionDigits": 2
+                    }
+                  }
+                },
+                "showBorder": false
+              }
+            },
+            "customWidth": "50",
+            "name": "query - platform"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where isnotempty(ThreatCategory)\r\n| summarize count() by ThreatCategory\r\n| order by count_ desc",
+              "size": 0,
+              "title": "ThreatCategory list",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "sortBy": [
+                  {
+                    "itemKey": "$gen_bar_count__1",
+                    "sortOrder": 2
+                  }
+                ]
+              },
+              "sortBy": [
+                {
+                  "itemKey": "$gen_bar_count__1",
+                  "sortOrder": 2
+                }
+              ],
+              "tileSettings": {
+                "showBorder": false,
+                "titleContent": {
+                  "columnMatch": "EventSource",
+                  "formatter": 1
+                },
+                "leftContent": {
+                  "columnMatch": "count_",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "palette": "auto"
+                  },
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "maximumSignificantDigits": 3,
+                      "maximumFractionDigits": 2
+                    }
+                  }
+                }
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 0 - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where isnotempty(ThreatCategory)\r\n| summarize count() by ThreatCategory, bin(TimeGenerated, {TimeRange:grain})\r\n| order by count_ desc\r\n",
+              "size": 0,
+              "title": "ThreatCategory over time: {TimeRange:label}",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "timechart",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ]
+              },
+              "sortBy": [],
+              "tileSettings": {
+                "showBorder": false,
+                "titleContent": {
+                  "columnMatch": "EventSource",
+                  "formatter": 1
+                },
+                "leftContent": {
+                  "columnMatch": "count_",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "palette": "auto"
+                  },
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "maximumSignificantDigits": 3,
+                      "maximumFractionDigits": 2
+                    }
+                  }
+                }
+              }
+            },
+            "customWidth": "50",
+            "name": "query - Threat over time "
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| summarize count() by SrcIpAddr\r\n| top 20 by count_\r\n",
+              "size": 1,
+              "title": "Top 20 Source IP Addresses",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "gridSettings": {
+                "sortBy": [
+                  {
+                    "itemKey": "count_",
+                    "sortOrder": 2
+                  }
+                ]
+              },
+              "sortBy": [
+                {
+                  "itemKey": "count_",
+                  "sortOrder": 2
+                }
+              ],
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "data_endpoint_type_s",
+                  "formatter": 1
+                },
+                "subtitleContent": {
+                  "columnMatch": "SrcIpAddr"
+                },
+                "leftContent": {
+                  "columnMatch": "count_",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "palette": "auto"
+                  },
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "maximumSignificantDigits": 3,
+                      "maximumFractionDigits": 2
+                    }
+                  }
+                },
+                "showBorder": false
+              }
+            },
+            "customWidth": "50",
+            "name": "query - ip src"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| summarize count() by DvcHostname\r\n| top 20 by count_\r\n",
+              "size": 1,
+              "title": "Top 20 Host Names ",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "tiles",
+              "gridSettings": {
+                "sortBy": [
+                  {
+                    "itemKey": "count_",
+                    "sortOrder": 2
+                  }
+                ]
+              },
+              "sortBy": [
+                {
+                  "itemKey": "count_",
+                  "sortOrder": 2
+                }
+              ],
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "data_endpoint_type_s",
+                  "formatter": 1
+                },
+                "subtitleContent": {
+                  "columnMatch": "DvcHostname"
+                },
+                "leftContent": {
+                  "columnMatch": "count_",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "palette": "auto"
+                  },
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "maximumSignificantDigits": 3,
+                      "maximumFractionDigits": 2
+                    }
+                  }
+                },
+                "showBorder": false
+              }
+            },
+            "customWidth": "50",
+            "name": "query - Hosts"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "summary"
+      },
+      "name": "group - summary"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "title": "Group: Alert",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where EventType == 'alert'\r\n| summarize count() by EventSeverity, bin(TimeGenerated,{TimeRange:grain})",
+              "size": 1,
+              "timeContextFromParameter": "TimeRange",
+              "timeBrushParameterName": "TimeRange",
+              "timeBrushExportOnlyWhenBrushed": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "barchart"
+            },
+            "name": "query - 0"
+          },
+          {
+            "type": 9,
+            "content": {
+              "version": "KqlParameterItem/1.0",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "parameters": [
+                {
+                  "id": "162c7b7d-3503-4236-8b21-200a4d0eeed5",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Severity",
+                  "label": "🚦 Severity",
+                  "type": 2,
+                  "isRequired": true,
+                  "multiSelect": true,
+                  "quote": "'",
+                  "delimiter": ",",
+                  "query": "SophosEPEvent\r\n| where EventType == 'alert'\r\n| summarize count() by EventSeverity\r\n| order by count_ desc\r\n| project value=EventSeverity, display = strcat(EventSeverity,' (',count_, ')' )",
+                  "crossComponentResources": [
+                    "{Workspace}"
+                  ],
+                  "value": [
+                    "value::all"
+                  ],
+                  "typeSettings": {
+                    "additionalResourceOptions": [
+                      "value::all"
+                    ],
+                    "selectAllValue": "All",
+                    "showDefault": false
+                  },
+                  "timeContext": {
+                    "durationMs": 0
+                  },
+                  "timeContextFromParameter": "TimeRange",
+                  "defaultValue": "value::all",
+                  "queryType": 0,
+                  "resourceType": "microsoft.operationalinsights/workspaces"
+                },
+                {
+                  "id": "162c7b7d-3503-4236-8b21-200a4d0eeed5",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "Source",
+                  "label": "👤 User Name / Source",
+                  "type": 2,
+                  "isRequired": true,
+                  "multiSelect": true,
+                  "quote": "'",
+                  "delimiter": ",",
+                  "query": "SophosEPEvent\r\n| where EventType == 'alert'\r\n| summarize count() by Source\r\n| order by count_ desc\r\n| project value=Source, display = strcat(Source,' (',count_, ')' )",
+                  "crossComponentResources": [
+                    "{Workspace}"
+                  ],
+                  "value": [
+                    "value::all"
+                  ],
+                  "typeSettings": {
+                    "additionalResourceOptions": [
+                      "value::all"
+                    ],
+                    "selectAllValue": "All",
+                    "showDefault": false
+                  },
+                  "timeContext": {
+                    "durationMs": 0
+                  },
+                  "timeContextFromParameter": "TimeRange",
+                  "defaultValue": "value::all",
+                  "queryType": 0,
+                  "resourceType": "microsoft.operationalinsights/workspaces"
+                },
+                {
+                  "id": "162c7b7d-3503-4236-8b21-200a4d0eeed5",
+                  "version": "KqlParameterItem/1.0",
+                  "name": "HostName",
+                  "type": 2,
+                  "isRequired": true,
+                  "multiSelect": true,
+                  "quote": "'",
+                  "delimiter": ",",
+                  "query": "SophosEPEvent\r\n| where EventType == 'alert'\r\n| summarize count() by DvcHostname\r\n| order by count_ desc\r\n| project value=DvcHostname, display = strcat(DvcHostname,' (',count_, ')' )",
+                  "crossComponentResources": [
+                    "{Workspace}"
+                  ],
+                  "value": [
+                    "value::all"
+                  ],
+                  "typeSettings": {
+                    "additionalResourceOptions": [
+                      "value::all"
+                    ],
+                    "selectAllValue": "All",
+                    "showDefault": false
+                  },
+                  "timeContext": {
+                    "durationMs": 0
+                  },
+                  "timeContextFromParameter": "TimeRange",
+                  "defaultValue": "value::all",
+                  "queryType": 0,
+                  "resourceType": "microsoft.operationalinsights/workspaces"
+                }
+              ],
+              "style": "above",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "name": "parameters - 2"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where EventType == 'alert'\r\n| where  EventSeverity in ({Severity}) or \"{Severity:label}\" == 'All' \r\n| where Source in ({Source}) or \"{Source:label}\" == 'All' \r\n| where DvcHostname in ({HostName}) or \"{HostName:label}\" == 'All' \r\n//| summarize arg_max(TimeGenerated,*) by EventOriginalUid",
+              "size": 0,
+              "title": "Alerts, count: {$rowCount} ",
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "table",
+              "gridSettings": {
+                "filter": true,
+                "sortBy": [
+                  {
+                    "itemKey": "ips_threat_data_techSupportId_s",
+                    "sortOrder": 2
+                  }
+                ]
+              },
+              "sortBy": [
+                {
+                  "itemKey": "ips_threat_data_techSupportId_s",
+                  "sortOrder": 2
+                }
+              ]
+            },
+            "name": "query - Alerts"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where EventType == 'alert'\r\n| where  EventSeverity in ({Severity}) or \"{Severity:label}\" == 'All' \r\n| where Source in ({Source}) or \"{Source:label}\" == 'All' \r\n| where DvcHostname in ({HostName}) or \"{HostName:label}\" == 'All' \r\n| project-keep ips*, EventOriginalUid, Source, TimeGenerated\r\n//| summarize arg_max(TimeGenerated,*) by EventOriginalUid",
+              "size": 0,
+              "title": "IPS, count: {$rowCount} ",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "table",
+              "gridSettings": {
+                "filter": true,
+                "sortBy": [
+                  {
+                    "itemKey": "ips_threat_data_techSupportId_s",
+                    "sortOrder": 2
+                  }
+                ]
+              },
+              "sortBy": [
+                {
+                  "itemKey": "ips_threat_data_techSupportId_s",
+                  "sortOrder": 2
+                }
+              ]
+            },
+            "name": "query - ips"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "alert"
+      },
+      "name": "group - Alert"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "title": "Group: Malware",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'MALWARE'\r\n| summarize count() by  EventSeverity \r\n| order by count_ desc",
+              "size": 4,
+              "title": "MALWARE by Severity",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "33",
+            "name": "query - malware"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'MALWARE'\r\n| summarize count() by  EventMessage \r\n| order by count_ desc",
+              "size": 4,
+              "title": "MALWARE by EventMessage",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "33",
+            "name": "query - malware - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'MALWARE'\r\n| summarize count() by  DvcHostname \r\n| order by count_ desc",
+              "size": 4,
+              "title": "MALWARE by Computer",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "33",
+            "name": "query - malware - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'MALWARE'\r\n| summarize count() by  Source \r\n| order by count_ desc",
+              "size": 4,
+              "title": "MALWARE by User",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "33",
+            "name": "query - malware - Copy - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'MALWARE'\r\n| where EventSeverity in ('low')  // remediated severity == low\r\n| summarize count() by DvcAction, DvcHostname, SrcDvcType, ThreatName\r\n| join kind=rightanti \r\n (\r\n  SophosEPEvent\r\n  | where ThreatCategory == 'MALWARE'\r\n  | where EventSeverity in ('medium','high') \r\n ) on DvcHostname",
+              "size": 0,
+              "title": "MALWARE of Med or High severity, that isn't resolved",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ]
+            },
+            "name": "query - malware resolved - Copy"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "malware"
+      },
+      "name": "group - Malware"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "title": "Group: Protection",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'PROTECTION'\r\n| summarize count() by  EventSeverity \r\n| order by count_ desc",
+              "size": 4,
+              "title": "PROTECTION by Severity",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "33",
+            "name": "query - malware"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'PROTECTION'\r\n| summarize count() by  EventMessage \r\n| order by count_ desc",
+              "size": 4,
+              "title": "PROTECTION by EventMessage",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "33",
+            "name": "query - malware - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'PROTECTION'\r\n| summarize count() by  DvcHostname \r\n| order by count_ desc",
+              "size": 4,
+              "title": "PROTECTION by Computer",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "33",
+            "name": "query - malware - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'PROTECTION'\r\n| summarize count() by  Source \r\n| order by count_ desc",
+              "size": 4,
+              "title": "PROTECTION by User",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart"
+            },
+            "customWidth": "33",
+            "name": "query - malware - Copy - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'PROTECTION'\r\n| summarize Failures = countif(EventMessage startswith \"Failed\") by EventMessage\r\n| order by Failures desc\r\n  ",
+              "size": 1,
+              "title": "PROTECTION by Computer - Failures",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "table",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Failures",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ]
+              }
+            },
+            "customWidth": "33",
+            "name": "query - Computer protect fails"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'PROTECTION'\r\n| summarize NewActions = countif(EventMessage startswith \"New\") by EventMessage\r\n| order by NewActions desc\r\n  ",
+              "size": 1,
+              "title": "PROTECTION by Computer - Failures",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "table",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Failures",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "sortBy": [
+                  {
+                    "itemKey": "NewActions",
+                    "sortOrder": 2
+                  }
+                ]
+              },
+              "sortBy": [
+                {
+                  "itemKey": "NewActions",
+                  "sortOrder": 2
+                }
+              ]
+            },
+            "customWidth": "33",
+            "name": "query - Computer protect fails - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SophosEPEvent\r\n| where ThreatCategory == 'PROTECTION'\r\n| summarize Scan = countif(EventMessage startswith \"Scan\") by EventMessage\r\n| where EventMessage startswith \"Scan\"\r\n| order by Scan desc\r\n  ",
+              "size": 1,
+              "title": "PROTECTION by Scan ",
+              "timeContextFromParameter": "TimeRange",
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "table",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Failures",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ]
+              },
+              "sortBy": []
+            },
+            "customWidth": "33",
+            "name": "query - scan"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "protection"
+      },
+      "name": "group - Protection"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "title": "Group: Updating",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'UPDATING'\r\n  | summarize count() by EventMessage, EventSeverity, DvcHostname, Source\r\n  | order by count_ desc",
+              "size": 0,
+              "title": "All Updating messages",
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'UPDATING' and EventMessage startswith 'Failed'\r\n  | summarize count() by EventMessage, EventSeverity, DvcHostname, Source\r\n  | order by count_ desc",
+              "size": 0,
+              "title": "Updating messages - Failed only",
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 0 - Copy"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "updating"
+      },
+      "name": "group - updating"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "title": "Group: RUNTIME_DETECTIONS",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'RUNTIME_DETECTIONS'\r\n  | summarize count() by EventMessage, EventSeverity, DvcHostname, Source\r\n  | order by count_ desc",
+              "size": 0,
+              "title": "All Runtime messages",
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "75",
+            "name": "query - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'RUNTIME_DETECTIONS' and EventMessage startswith 'Failed'\r\n  | summarize count() by EventMessage, EventSeverity, DvcHostname, Source\r\n  | order by count_ desc",
+              "size": 0,
+              "title": "Runtime messages - Failed only",
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "25",
+            "name": "query - 0 - Copy"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "runtime"
+      },
+      "name": "group - RUNTIME_DETECTIONS"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "title": "Group: Peripherals   ",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'PERIPHERALS'\r\n  | summarize count() by EventMessage, EventSeverity, DvcHostname, Source\r\n  | order by count_ desc",
+              "size": 0,
+              "title": "All Peripherals messages",
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "75",
+            "name": "query - 0"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "peripherals"
+      },
+      "name": "group - Peripherals   "
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "title": "Group: Mobiles",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'MOBILES'\r\n  | summarize count() by EventMessage, EventSeverity, DvcHostname, Source\r\n  | order by count_ desc",
+              "size": 0,
+              "title": "All Mobiles messages",
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "75",
+            "name": "query - 0"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "mobiles"
+      },
+      "name": "group - Mobiles"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "title": "Group: Web",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'WEB'\r\n  | summarize count() by EventMessage, EventSeverity, DvcHostname,DvcAction, Source, SrcIpAddr, TimeGenerated\r\n  | parse EventMessage with * \"'https://\" webURL \"'\" *\r\n  | parse EventMessage with * \"category '\" category_ \"'\" *\r\n  | order by count_ desc",
+              "size": 0,
+              "title": "All Web messages",
+              "timeContextFromParameter": "TimeRange",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "name": "query -web"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'WEB'\r\n  | parse EventMessage with * \"'https://\" webURL \"'\" *\r\n  | summarize count() by webURL\r\n  | order by count_ desc",
+              "size": 0,
+              "title": "Top URLs",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "33",
+            "name": "query -web - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'WEB'\r\n  | parse EventMessage with * \"category '\" category_ \"'\" *\r\n  | summarize count() by category_\r\n  | order by count_ desc",
+              "size": 0,
+              "title": "Top Category",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "33",
+            "name": "query -web - Copy - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "  SophosEPEvent\r\n  | where ThreatCategory == 'WEB'\r\n  | summarize count() by EventSeverity\r\n  | order by count_ desc",
+              "size": 1,
+              "title": "All Web messages Severity",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "visualization": "piechart",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "EventSeverity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "medium",
+                          "representation": "orange",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "green",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "redBright",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "count_",
+                    "formatter": 4,
+                    "formatOptions": {
+                      "palette": "greenRed"
+                    }
+                  }
+                ],
+                "filter": true
+              }
+            },
+            "customWidth": "33",
+            "name": "query -web - Copy - Copy"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "selectedTab",
+        "comparison": "isEqualTo",
+        "value": "web"
+      },
+      "name": "group - Web"
+    }
+  ],
+  "fromTemplateId": "sentinel-SEPWorkbook",
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
