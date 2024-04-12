@@ -19,3 +19,5 @@ null,null,OfficeActivity,null,null,null
 null,null,Syslog,null,null,null
 null,null,SecurityEvent,null,null,null
 AD_Computers_CL,null,null,null,null,null
+null,Tenable_IO_Assets_CL,null,1,1
+null,null,CA3_Certificates_CL,null,null
