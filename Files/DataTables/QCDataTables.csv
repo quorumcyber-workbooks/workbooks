@@ -1,0 +1,20 @@
+﻿qcDT1,qcDT2,qcDT3,qcMinimum,qcClassification,qcAdditionalInfo
+null,null,SigninLogs,null,null,null
+null,null,AuditLogs,null,null,null
+null,null,AADNonInteractiveUserSignInLogs,null,null,null
+null,null,AADServicePrincipalSignInLogs,null,null,null
+null,null,AADManagedIdentitySignInLogs,null,null,null
+null,null,AADProvisioningLogs,null,null,null
+null,null,ADFSSignInLogs,null,null,null
+null,null,AADUserRiskEvents,null,null,null
+null,null,AADRiskyUsers,null,null,null
+null,null,NetworkAccessTraffic,null,null,null
+null,null,AADRiskyServicePrincipals,null,null,null
+null,null,AADServicePrincipalRiskEvents,null,null,null
+null,null,Azure Active Directory Identity Protection,null,null,null
+null,null,AzureActivity,null,null,null
+null,null,Azure Security Center,null,null,null
+null,null,JuniperSRX,null,null,null
+null,null,OfficeActivity,null,null,null
+null,null,Syslog,null,null,null
+null,null,SecurityEvent,null,null,null
