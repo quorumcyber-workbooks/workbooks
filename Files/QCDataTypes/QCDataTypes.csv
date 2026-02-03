@@ -1,3 +1,5 @@
 qcDataTable,qcPercentageBand,qcSuppressionAlerts,qcClassification,qcAdditionalInfo
 LAQueryLogs,999,0,0,Test
 ThreatIntelligenceIndicator,85,2,1,Test
+Alert,999,0,0,Test
+
