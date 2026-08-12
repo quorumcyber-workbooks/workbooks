@@ -1,0 +1,40 @@
+Provider,Product,Domain,Category,Sanctioned,RiskType,SourceURL
+OpenAI,ChatGPT,chatgpt.com,Web,false,Chat,https://chatgpt.com/
+OpenAI,OpenAI API,api.openai.com,API,false,API,https://platform.openai.com/
+OpenAI,Codex,chatgpt.com/codex,Developer,false,Developer,https://openai.com/codex/
+Anthropic,Claude,claude.ai,Web,false,Chat,https://claude.ai/
+Anthropic,Anthropic API,api.anthropic.com,API,false,API,https://docs.anthropic.com/
+Google,Gemini,gemini.google.com,Web,false,Chat,https://gemini.google.com/
+Google,Google AI Studio,aistudio.google.com,Developer,false,Developer,https://aistudio.google.com/
+Google,NotebookLM,notebooklm.google.com,Web,false,Document,https://notebooklm.google.com/
+Perplexity,Perplexity,perplexity.ai,Web,false,Chat,https://www.perplexity.ai/
+Quora,Poe,poe.com,Web,false,Chat,https://poe.com/
+Character.AI,Character.AI,character.ai,Web,false,Chat,https://character.ai/
+Hugging Face,Hugging Face,huggingface.co,Developer,false,Developer,https://huggingface.co/
+Mistral AI,Le Chat,chat.mistral.ai,Web,false,Chat,https://chat.mistral.ai/
+Mistral AI,Mistral API,api.mistral.ai,API,false,API,https://docs.mistral.ai/
+DeepSeek,DeepSeek,chat.deepseek.com,Web,false,Chat,https://chat.deepseek.com/
+DeepSeek,DeepSeek API,api.deepseek.com,API,false,API,https://api-docs.deepseek.com/
+xAI,Grok,grok.com,Web,false,Chat,https://grok.com/
+Microsoft,Microsoft Copilot,copilot.microsoft.com,Web,true,Chat,https://copilot.microsoft.com/
+Microsoft,Azure AI Foundry,ai.azure.com,Developer,true,Developer,https://ai.azure.com/
+GitHub,GitHub Copilot,githubcopilot.com,Developer,false,Developer,https://github.com/features/copilot
+GitHub,GitHub Copilot Business,business.githubcopilot.com,Developer,false,Developer,https://docs.github.com/en/copilot/reference/copilot-allowlist-reference
+GitHub,GitHub Copilot Enterprise,enterprise.githubcopilot.com,Developer,false,Developer,https://docs.github.com/en/copilot/reference/copilot-allowlist-reference
+Meta,Meta AI,meta.ai,Web,false,Chat,https://www.meta.ai/
+Cohere,Cohere,cohere.com,API,false,API,https://cohere.com/
+Together AI,Together AI,together.ai,API,false,API,https://www.together.ai/
+Groq,GroqCloud,console.groq.com,API,false,API,https://console.groq.com/
+OpenRouter,OpenRouter,openrouter.ai,API,false,API,https://openrouter.ai/
+Cerebras,Cerebras Inference,inference.cerebras.ai,API,false,API,https://inference.cerebras.ai/
+Stability AI,Stability AI,stability.ai,Image,false,Image,https://stability.ai/
+Midjourney,Midjourney,midjourney.com,Image,false,Image,https://www.midjourney.com/
+Black Forest Labs,FLUX,blackforestlabs.ai,Image,false,Image,https://blackforestlabs.ai/
+Runway,Runway,runwayml.com,Video,false,Video,https://runwayml.com/
+ElevenLabs,ElevenLabs,elevenlabs.io,Audio,false,Audio,https://elevenlabs.io/
+Suno,Suno,suno.com,Audio,false,Audio,https://suno.com/
+Replit,Replit AI,replit.com,Developer,false,Developer,https://replit.com/
+Cursor,Cursor,cursor.com,Developer,false,Developer,https://www.cursor.com/
+Windsurf,Windsurf,windsurf.com,Developer,false,Developer,https://windsurf.com/
+Phind,Phind,phind.com,Developer,false,Developer,https://www.phind.com/
+You.com,You.com,you.com,Web,false,Chat,https://you.com/
