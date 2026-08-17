@@ -1,0 +1,16 @@
+Name,Category,MatchField,Pattern,MatchType,RiskLevel,DefaultAction,Reason,SourceURL
+OpenClaw,Autonomous AI agent,FileName,OpenClawCompanion*.exe,Wildcard,High,Review,"Native Windows companion for a locally running autonomous AI assistant with gateway/node capabilities.",https://docs.openclaw.ai/windows
+OpenClaw,Autonomous AI agent,ProcessCommandLine,openclaw,Contains,High,Review,"CLI/gateway command used by OpenClaw; command-line matching helps detect npm/Node installs that may not expose a dedicated executable.",https://docs.openclaw.ai/windows
+NanoClaw,Autonomous AI agent,ProcessCommandLine,nanoclaw.sh,Contains,High,Review,"NanoClaw normally runs through a shell script and containers rather than a dedicated Windows .exe, so command-line detection is more reliable.",https://github.com/nanocoai/nanoclaw
+NanoClaw,Autonomous AI agent,ProcessCommandLine,nanoclaw,Contains,High,Review,"Generic NanoClaw command-line marker for WSL/container-based installs.",https://github.com/nanocoai/nanoclaw
+Claude Code,Agentic coding CLI,ProcessCommandLine,claude,Contains,Medium,Review,"Agentic coding CLI capable of reading files and executing development workflows; validate against approved tooling.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+OpenAI Codex CLI,Agentic coding CLI,ProcessCommandLine,codex,Contains,Medium,Review,"Agentic coding CLI; validate against approved tooling and data handling policy.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+Google Gemini CLI,Agentic coding CLI,ProcessCommandLine,gemini,Contains,Medium,Review,"Agentic coding CLI; validate against approved tooling and data handling policy.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+Cline,Agentic coding tool,ProcessCommandLine,cline,Contains,Medium,Review,"Agentic coding tool; may operate through VS Code/Node rather than a unique .exe.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+Cursor,AI coding IDE,FileName,Cursor.exe,Exact,Medium,Review,"AI-enabled coding IDE. Keep as Review because it may be formally sanctioned in some environments.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+Goose,Agentic coding CLI,ProcessCommandLine,goose,Contains,Medium,Review,"Agentic coding CLI capable of local development actions.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+OpenCode,Agentic coding CLI,ProcessCommandLine,opencode,Contains,Medium,Review,"Agentic coding CLI; validate against approved tooling.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+Kiro CLI,Agentic coding CLI,ProcessCommandLine,kiro-cli,Contains,Medium,Review,"Agentic coding CLI; validate against approved tooling.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+GitHub Copilot CLI,Agentic coding CLI,ProcessCommandLine,copilot,Contains,Medium,Review,"AI coding CLI; may be sanctioned, so review rather than automatically block.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+Augment CLI,Agentic coding CLI,ProcessCommandLine,auggie,Contains,Medium,Review,"Agentic coding CLI; validate against approved tooling.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
+Amp,Agentic coding CLI,ProcessCommandLine,amp,Contains,Medium,Review,"Agentic coding CLI; validate against approved tooling.",https://www.npmjs.com/package/@puzzmo/agent-cli-detect
