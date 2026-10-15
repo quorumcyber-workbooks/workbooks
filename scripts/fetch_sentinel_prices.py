@@ -23,7 +23,11 @@ CURRENCIES = [
 # records are narrowed further below because Storage contains other products.
 PRICING_QUERIES = [
     ("Sentinel", "serviceName eq 'Sentinel'"),
-    ("DataLake", "serviceFamily eq 'Storage'"),
+    (
+    "DataLake",
+    "serviceFamily eq 'Storage' "
+    "and contains(productName, 'Data Lake')",
+),
 ]
 
 DATA_LAKE_TERMS = (
