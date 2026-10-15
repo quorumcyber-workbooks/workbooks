@@ -94,3 +94,172 @@ def is_data_lake_record(item):
         str(item.get(field) or "")
         for field in ("productName", "skuName", "meterName")
     ).lower()
+
+    return any(term in searchable_text for term in DATA_LAKE_TERMS)
+
+
+def include_record(item, currency, pricing_category):
+    if item.get("currencyCode") != currency:
+        return False
+
+    if pricing_category == "Sentinel":
+        return item.get("serviceName") == "Sentinel"
+
+    if pricing_category == "DataLake":
+        return is_data_lake_record(item)
+
+    return False
+
+
+def normalise_record(item, pricing_category):
+    return {
+        "pricingCategory": pricing_category,
+        "currencyCode": item.get("currencyCode"),
+        "armRegionName": item.get("armRegionName"),
+        "location": item.get("location"),
+        "productName": item.get("productName"),
+        "serviceName": item.get("serviceName"),
+        "serviceFamily": item.get("serviceFamily"),
+        "skuName": item.get("skuName"),
+        "meterName": item.get("meterName"),
+        "unitOfMeasure": item.get("unitOfMeasure"),
+        "unitPrice": item.get("unitPrice"),
+        "retailPrice": item.get("retailPrice"),
+        "type": item.get("type"),
+        "effectiveStartDate": item.get("effectiveStartDate"),
+        "meterId": item.get("meterId"),
+    }
+
+
+def fetch_currency(currency, pricing_category, api_filter):
+    query = urlencode(
+        {
+            "currencyCode": f"'{currency}'",
+            "$filter": api_filter,
+        }
+    )
+
+    next_url = f"{API_BASE}?{query}"
+    records = []
+
+    while next_url:
+        payload = get_json(next_url)
+
+        for item in payload.get("Items", []):
+            if include_record(item, currency, pricing_category):
+                records.append(
+                    normalise_record(item, pricing_category)
+                )
+
+        next_url = (
+            payload.get("NextPageLink")
+            or payload.get("nextPageLink")
+        )
+
+    return records
+
+
+def record_key(record):
+    return (
+        record.get("pricingCategory"),
+        record.get("currencyCode"),
+        record.get("armRegionName"),
+        record.get("productName"),
+        record.get("serviceName"),
+        record.get("skuName"),
+        record.get("meterName"),
+        record.get("unitPrice"),
+        record.get("effectiveStartDate"),
+        record.get("type"),
+    )
+
+
+def main():
+    all_records = []
+
+    for currency in CURRENCIES:
+        for pricing_category, api_filter in PRICING_QUERIES:
+            print(
+                f"Fetching {pricing_category} prices for {currency}"
+            )
+
+            all_records.extend(
+                fetch_currency(
+                    currency,
+                    pricing_category,
+                    api_filter,
+                )
+            )
+
+    unique_records = {
+        record_key(record): record
+        for record in all_records
+    }
+
+    prices = sorted(
+        unique_records.values(),
+        key=lambda item: (
+            item.get("pricingCategory") or "",
+            item.get("currencyCode") or "",
+            item.get("armRegionName") or "",
+            item.get("productName") or "",
+            item.get("skuName") or "",
+            item.get("meterName") or "",
+        ),
+    )
+
+    category_counts = Counter(
+        item.get("pricingCategory")
+        for item in prices
+    )
+
+    output = {
+        "generatedAtUtc": datetime.now(timezone.utc).isoformat(),
+        "productName": "Sentinel and Data Lake",
+        "pricingCategories": [
+            "Sentinel",
+            "DataLake",
+        ],
+        "currencies": CURRENCIES,
+        "regions": sorted(
+            {
+                item["armRegionName"]
+                for item in prices
+                if item.get("armRegionName")
+            }
+        ),
+        "recordCount": len(prices),
+        "recordCounts": dict(sorted(category_counts.items())),
+        "prices": prices,
+    }
+
+    output_path = Path("data/sentinel-prices.json")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    output_path.write_text(
+        json.dumps(output, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    print(
+        f"Wrote {len(prices)} pricing records across "
+        f"{len(CURRENCIES)} currencies and "
+        f"{len(output['regions'])} regions"
+    )
+
+    for category in ("Sentinel", "DataLake"):
+        print(
+            f"{category} records: "
+            f"{category_counts.get(category, 0)}"
+        )
+
+        if category_counts.get(category, 0) == 0:
+            print(
+                f"WARNING: no {category} records were found. "
+                "Check the Azure meter names before replacing "
+                "the workbook's manual parameters."
+            )
+
+
+if __name__ == "__main__":
+    main()
