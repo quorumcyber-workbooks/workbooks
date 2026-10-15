@@ -1,14 +1,13 @@
 import json
-import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
+
 API_BASE = "https://prices.azure.com/api/retail/prices"
-API_VERSION = "2021-10-01"
 
 CURRENCIES = [
     "USD",
@@ -30,7 +29,7 @@ CURRENCIES = [
     "TWD",
 ]
 
-FILTER = "productName eq 'Sentinel'"
+FILTER = "serviceName eq 'Sentinel'"
 
 
 def get_json(url):
@@ -47,8 +46,16 @@ def get_json(url):
                 return json.load(response)
 
         except HTTPError as error:
+            response_body = error.read().decode(
+                "utf-8",
+                errors="replace",
+            )
+
             if error.code not in (429, 500, 502, 503, 504):
-                raise
+                raise RuntimeError(
+                    f"Azure Retail Prices API returned HTTP "
+                    f"{error.code}: {response_body}"
+                ) from error
 
             retry_after = error.headers.get("Retry-After", "10")
 
@@ -63,13 +70,28 @@ def get_json(url):
             )
             time.sleep(delay)
 
-    raise RuntimeError(f"Unable to retrieve pricing after five attempts: {url}")
+        except URLError as error:
+            if attempt == 4:
+                raise RuntimeError(
+                    f"Unable to connect to Azure Retail Prices API: "
+                    f"{error}"
+                ) from error
+
+            delay = 10
+            print(
+                f"Network error; retrying in {delay} seconds "
+                f"(attempt {attempt + 1}/5)"
+            )
+            time.sleep(delay)
+
+    raise RuntimeError(
+        f"Unable to retrieve pricing after five attempts: {url}"
+    )
 
 
 def fetch_currency(currency):
     query = urlencode(
         {
-            "api-version": API_VERSION,
             "currencyCode": f"'{currency}'",
             "$filter": FILTER,
         }
@@ -83,7 +105,7 @@ def fetch_currency(currency):
 
         for item in payload.get("Items", []):
             if (
-                item.get("productName") == "Sentinel"
+                item.get("serviceName") == "Sentinel"
                 and item.get("currencyCode") == currency
             ):
                 records.append(
@@ -120,8 +142,9 @@ for currency in CURRENCIES:
     print(f"Fetching Sentinel prices for {currency}")
     all_records.extend(fetch_currency(currency))
 
-# Remove accidental duplicates while preserving all regions/currencies.
+
 unique_records = {}
+
 for record in all_records:
     key = (
         record.get("currencyCode"),
@@ -132,7 +155,9 @@ for record in all_records:
         record.get("effectiveStartDate"),
         record.get("type"),
     )
+
     unique_records[key] = record
+
 
 prices = sorted(
     unique_records.values(),
@@ -144,9 +169,9 @@ prices = sorted(
     ),
 )
 
+
 output = {
     "generatedAtUtc": datetime.now(timezone.utc).isoformat(),
-    "apiVersion": API_VERSION,
     "productName": "Sentinel",
     "currencies": CURRENCIES,
     "regions": sorted(
@@ -159,6 +184,7 @@ output = {
     "recordCount": len(prices),
     "prices": prices,
 }
+
 
 output_path = Path("data/sentinel-prices.json")
 output_path.parent.mkdir(parents=True, exist_ok=True)
