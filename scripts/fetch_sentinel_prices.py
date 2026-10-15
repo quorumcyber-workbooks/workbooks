@@ -70,7 +70,7 @@ def fetch_currency(currency):
     query = urlencode(
         {
             "api-version": API_VERSION,
-            "currencyCode": currency,
+            "currencyCode": f"'{currency}'",
             "$filter": FILTER,
         }
     )
