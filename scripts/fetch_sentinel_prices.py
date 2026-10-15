@@ -214,11 +214,8 @@ def main():
 
     output = {
         "generatedAtUtc": datetime.now(timezone.utc).isoformat(),
-        "productName": "Sentinel and Data Lake",
-        "pricingCategories": [
-            "Sentinel",
-            "DataLake",
-        ],
+"productName": "Sentinel",
+"pricingCategories": ["Sentinel"],
         "currencies": CURRENCIES,
         "regions": sorted(
             {
