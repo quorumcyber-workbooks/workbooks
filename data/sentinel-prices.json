@@ -1,9 +1,8 @@
 {
-  "generatedAtUtc": "2026-10-15T15:59:57.618042+00:00",
-  "productName": "Sentinel and Data Lake",
+  "generatedAtUtc": "2026-10-15T16:02:53.635445+00:00",
+  "productName": "Sentinel",
   "pricingCategories": [
-    "Sentinel",
-    "DataLake"
+    "Sentinel"
   ],
   "currencies": [
     "GBP",
