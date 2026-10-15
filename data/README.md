@@ -11,6 +11,8 @@ The workbook uses this file to look up Sentinel PAYG and Commitment Tier prices 
 
 Source file: [`data/sentinel-prices.json`](https://github.com/quorumcyber-workbooks/workbooks/blob/main/data/sentinel-prices.json)
 
+fetch_sentinel_prices.py is used to run a GitHub Action, every day at 6am,  with the associated YAML file in the ..Workflows folder: update-sentinel-prices.yml
+
 ## Data source
 
 The file is generated from the Azure Retail Prices API and filtered to Microsoft Sentinel pricing.
