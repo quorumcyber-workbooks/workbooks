@@ -3,7 +3,7 @@ name: Update Sentinel prices
 on:
   schedule:
     # GitHub Actions uses UTC.
-    - cron: "0 6 * * *"
+    - cron: "5 6 * * *"
 
   # Allows you to run it immediately from the Actions tab.
   workflow_dispatch:
